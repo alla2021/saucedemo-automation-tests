@@ -7,9 +7,7 @@
 
 //      await LoginPage.open();
 //      await LoginPage.login('standard_user', 'secret_sauce');
-
-//      await InventoryPage.checkContainer();
-
-//      await expect(InventoryPage.inventoryContainer).toBeDisplayed();
+            
+//      expect(InventoryPage.verifyInventoryPageVisibility());
 //   });
 //});

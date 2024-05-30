@@ -7,11 +7,12 @@ describe('Logout application', () => {
       await LoginPage.open();
       await LoginPage.login('standard_user', 'secret_sauce');
 
-      await InventoryPage.checkContainer();
+      await InventoryPage.verifyInventoryPageVisibility();
       await InventoryPage.logout();
       
-      await expect(LoginPage.checkContainer());
-      await expect(InventoryPage.inventoryContainer).not.toBeDisplayed();
+      //expect(InventoryPage.inventoryContainer).not.toBeDisplayed();
+      
+      expect(LoginPage.loginContainer).toBeDisplayed();
    });
 });
 

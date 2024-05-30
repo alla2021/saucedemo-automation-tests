@@ -10,15 +10,10 @@
 //      await LoginPage.waitForErrorMessage();
 //      await LoginPage.waitForErrorIcons();
 
-//      const errorMessageText = await LoginPage.getErrorMessageText();
-//      const loginField = await LoginPage.username;
-//      const passwordField = await LoginPage.password;
-
 //      // Validate highlighting and icons
-//      await expect(errorMessageText).toContain('Epic sadface: Username and password do not match any user in this service');
-//      await expect(loginField).toHaveAttribute('class', expect.stringContaining('error'));
-//      await expect(passwordField).toHaveAttribute('class', expect.stringContaining('error'));
-//      await expect(LoginPage.errorIcons[0]).toBeDisplayed();
-//      await expect(LoginPage.errorIcons[1]).toBeDisplayed();
+//      expect(LoginPage.expectErrorMessage('Epic sadface: Username and password do not match any user in this service'));
+//      expect(LoginPage.username).toHaveAttribute('class', expect.stringContaining('error'));
+//      expect(LoginPage.password).toHaveAttribute('class', expect.stringContaining('error'));
+//      expect(LoginPage.waitForErrorIcons());
 //   });
 //});
