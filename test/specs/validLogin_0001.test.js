@@ -8,6 +8,7 @@
 //      await LoginPage.open();
 //      await LoginPage.login('standard_user', 'secret_sauce');
             
-//      expect(InventoryPage.verifyInventoryPageVisibility());
+//      expect(InventoryPage.shoppingCartBtn.toBeDisplayed());
+//      expect(InventoryPage.inventoryContainer.toBeDisplayed());
 //   });
 //});

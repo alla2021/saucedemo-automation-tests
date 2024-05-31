@@ -21,29 +21,12 @@ class LoginPage extends Page {
         await this.loginButton.click();
     }
 
-    async waitForErrorMessage() {
-        await this.errorMessage.waitForDisplayed();
-    }
-
     async getErrorMessageText() {
         return this.errorMessage.getText();
     }
 
-    async waitForErrorIcons() {
-        await this.errorIcons[0].waitForDisplayed();
-        await this.errorIcons[1].waitForDisplayed();
-    }
-
     async expectErrorMessage(errorMessage) {
-        await this.getErrorMessageText().toContain(errorMessage);    
-    }
-
-    async checkLoginContainer() {
-        await this.loginPage.waitForDisplayed();
-    }
-
-    async verifyLoginPageVisibility() {
-        await this.loginPage.waitForDisplayed();
+        return await this.getErrorMessageText().toContain(errorMessage);    
     }
 
     open () {
