@@ -7,7 +7,10 @@ import CheckoutPage from '../pageobjects/checkout.page.js';
 describe('Checkout without products', () => {
    it('should display an error message when trying to checkout without products', async () => {
       await LoginPage.open();
+      const passwordFieldType = await LoginPage.verifyPasswordFieldType();
+      expect(passwordFieldType).toEqual('password');      
       await LoginPage.login('standard_user', 'secret_sauce');
+
       
       expect(InventoryPage.shoppingCartBtn.toBeDisplayed());
       expect(InventoryPage.inventoryContainer.toBeDisplayed());

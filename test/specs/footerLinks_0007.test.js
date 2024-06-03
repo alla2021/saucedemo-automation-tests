@@ -4,10 +4,11 @@ import InventoryPage from '../pageobjects/inventory.page.js';
 
 describe('Footer Links', () => {
    it('should open Twitter, Facebook, and LinkedIn pages in new tabs', async () => {
-
       await LoginPage.open();
+      const passwordFieldType = await LoginPage.verifyPasswordFieldType();
+      expect(passwordFieldType).toEqual('password');      
       await LoginPage.login('standard_user', 'secret_sauce');
-      expect(InventoryPage.footer.toBeDisplayed())
+      expect(InventoryPage.footer.toBeDisplayed());
 
       await InventoryPage.twitterLink.click();
       const handles = await browser.getWindowHandles();

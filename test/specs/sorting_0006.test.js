@@ -5,6 +5,8 @@ import InventoryPage from '../pageobjects/inventory.page.js';
 describe('Sorting options', () => {
    it('should sort products according to chosen sorting options', async () => {
       await LoginPage.open();
+      const passwordFieldType = await LoginPage.verifyPasswordFieldType();
+      expect(passwordFieldType).toEqual('password');      
       await LoginPage.login('standard_user', 'secret_sauce');
 
       const sortingOptions = [

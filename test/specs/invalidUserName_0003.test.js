@@ -3,8 +3,9 @@ import LoginPage from '../pageobjects/login.page.js'
 
 describe('Negative Test: Login with Invalid Username', () => {
    it('should display error message and highlight fields with invalid Username', async () => {
-
       await LoginPage.open();
+      const passwordFieldType = await LoginPage.verifyPasswordFieldType();
+      expect(passwordFieldType).toEqual('password');      
       await LoginPage.login('standarD_user', 'secret_sauce');
 
       expect(LoginPage.errorMessage.toBeDisplayed());

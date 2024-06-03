@@ -15,8 +15,7 @@ class LoginPage extends Page {
     }
     
     async verifyPasswordFieldType() {
-        const passwordFieldType = await this.password.getAttribute('type');
-        expect(passwordFieldType).toEqual('password');
+        return await this.password.getAttribute('type');
     }
 
     async login (username, password) {

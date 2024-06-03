@@ -7,6 +7,8 @@ import CheckoutPage from '../pageobjects/checkout.page.js';
 describe('Valid Checkout', () => {
    it('should successfully complete the checkout process', async () => {
       await LoginPage.open();
+      const passwordFieldType = await LoginPage.verifyPasswordFieldType();
+      expect(passwordFieldType).toEqual('password');      
       await LoginPage.login('standard_user', 'secret_sauce');
 
       expect(InventoryPage.shoppingCartBtn.waitForDisplayed());

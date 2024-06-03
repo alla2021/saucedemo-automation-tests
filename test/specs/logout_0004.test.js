@@ -4,8 +4,9 @@ import InventoryPage from '../pageobjects/inventory.page.js';
 
 describe('Logout application', () => {
    it('should logout successfully and redirect to login page', async () => {
-      
       await LoginPage.open();
+      const passwordFieldType = await LoginPage.verifyPasswordFieldType();
+      expect(passwordFieldType).toEqual('password');      
       await LoginPage.login('standard_user', 'secret_sauce');
 
       expect(InventoryPage.shoppingCartBtn.waitForDisplayed());

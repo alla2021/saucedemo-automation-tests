@@ -5,13 +5,14 @@ import CartPage from '../pageobjects/cart.page.js';
 
 describe('Saving the cart after logout', () => {
    it('should add item to cart, logout, and verify cart is saved after login', async () => {
-
       await LoginPage.open();
+      const passwordFieldType = await LoginPage.verifyPasswordFieldType();
+      expect(passwordFieldType).toEqual('password');      
       await LoginPage.login('standard_user', 'secret_sauce');
-
       expect(InventoryPage.shoppingCartBtn.toBeDisplayed());
       expect(InventoryPage.inventoryContainer.toBeDisplayed());
-      const expectedItemTitle =await (InventoryPage.secondItemTitle).getText()
+
+      const expectedItemTitle = await (InventoryPage.secondItemTitle).getText()
       await InventoryPage.addToCartSecondItem.click();
       await expect(InventoryPage.cartBadge).toHaveText('1');
 
