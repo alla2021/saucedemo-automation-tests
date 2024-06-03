@@ -5,36 +5,35 @@ import CartPage from '../pageobjects/cart.page.js';
 
 describe('Saving the cart after logout', () => {
    it('should add item to cart, logout, and verify cart is saved after login', async () => {
-      
+
       await LoginPage.open();
       await LoginPage.login('standard_user', 'secret_sauce');
-      //step 1
-      expect(InventoryPage.shoppingCartBtn.waitForDisplayed());
-      expect(InventoryPage.inventoryContainer.waitForDisplayed());
+
+      expect(InventoryPage.shoppingCartBtn.toBeDisplayed());
+      expect(InventoryPage.inventoryContainer.toBeDisplayed());
+      const expectedItemTitle =await (InventoryPage.secondItemTitle).getText()
       await InventoryPage.addToCartSecondItem.click();
       await expect(InventoryPage.cartBadge).toHaveText('1');
-      
-      await browser.pause(2000)
-      
-      //step 2
-      //await InventoryPage.openMenu();
-      //await browser.pause(2000)
-      //await expect(InventoryPage.verifyMenuItemsCount(4));
-      //await browser.pause(2000)
-      //////step 3
-      //await InventoryPage.logout();
 
+      expect((InventoryPage.menuItems).toBeDisplayed());
+      await InventoryPage.menuButton.click();
+      expect((InventoryPage.menuItems[0]).toBeDisplayed());
+      expect(InventoryPage.verifyMenuItemsCount(4));
 
-      //await LoginPage.verifyFieldsAreEmpty();
-      //await browser.pause(2000)
-      //await LoginPage.login('standard_user', 'secret_sauce');
-      //await InventoryPage.checkContainer();
-      //await browser.pause(2000)
-      //await CartPage.checkCart();
-      //await expect(InventoryPage.cartBadge).toHaveText('1');
-      //await CartPage.checkout();
+      await InventoryPage.logoutButton.click();
+      expect((LoginPage.loginPage.toBeDisplayed()));
+      await expect(LoginPage.username).toHaveValue('');
+      await expect(LoginPage.password).toHaveValue('');
 
-      //const cartItem = await CartPage.cartItem;
-      //await expect(cartItem).toBeDisplayed();
+      await LoginPage.login('standard_user', 'secret_sauce');
+      expect(InventoryPage.shoppingCartBtn.toBeDisplayed());
+      expect(InventoryPage.inventoryContainer.toBeDisplayed());
+
+      expect(InventoryPage.cartBadge).toHaveText('1');
+      await InventoryPage.shoppingCartBtn.click();
+      expect(CartPage.cartContainer.toBeDisplayed());
+
+      const cartItemTitle = await (CartPage.itemTitle).getText();
+      await expect(cartItemTitle).toEqual(expectedItemTitle);  
    });
 });

@@ -1,16 +1,16 @@
 class CartPage {
    get cartContainer() { return $('.cart_container'); }
-   get cartItem() { return $('.cart_item'); }
+   get cartItems() { return $$('.cart_item'); }
    get checkoutButton() { return $('.checkout_button'); }
+   get itemTitle() { return $('#item_0_title_link div'); }
+   get continueButton() { return $('#continue'); }
 
-
-   async checkCart() {
-      await this.cartContainer.waitForDisplayed();
+   async fillOutCheckoutInformation(firstName, lastName, zipCode) {
+      await $('#first-name').setValue(firstName);
+      await $('#last-name').setValue(lastName);
+      await $('#postal-code').setValue(zipCode);
    }
 
-   async checkout() {
-      await this.checkoutButton.click();
-   }
 }
 
 export default new CartPage();
