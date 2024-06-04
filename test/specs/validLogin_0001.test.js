@@ -2,7 +2,7 @@ import { expect } from '@wdio/globals';
 import LoginPage from '../pageobjects/login.page.js';
 import InventoryPage from '../pageobjects/inventory.page.js';
 
-describe('My Login application', () => {
+describe('Login', () => {
    it('should login with valid credentials', async () => {
       await LoginPage.open();
       const passwordFieldType = await LoginPage.verifyPasswordFieldType();

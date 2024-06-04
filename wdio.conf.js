@@ -23,6 +23,17 @@ export const config = {
     specs: [
         './test/specs/**/*.js'
     ],
+    reporters: [
+    "spec",
+    [
+        "allure",
+            {
+                outputDir: 'allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: false,
+            },
+    ],
+    ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'

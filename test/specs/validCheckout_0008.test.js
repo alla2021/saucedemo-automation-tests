@@ -29,7 +29,7 @@ describe('Valid Checkout', () => {
 
       await CartPage.checkoutButton.click();
 
-      await CartPage.fillOutCheckoutInformation('John', 'Doe', '12345678');
+      await CartPage.fillOutCheckoutInformation('Ryan', 'Gosling', 'Drive_2011');
       
       await CartPage.continueButton.click();
 
