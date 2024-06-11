@@ -7,7 +7,7 @@ describe('Login', () => {
       await LoginPage.open();
       const passwordFieldType = await LoginPage.verifyPasswordFieldType();
       expect(passwordFieldType).toEqual('password');      
-      await LoginPage.login('standard_user', 'secret_sauce');
+      await LoginPage.login(process.env.SAUCEDEMO_USERNAME, process.env.SAUCEDEMO_PASSWORD);
             
       expect(InventoryPage.shoppingCartBtn.toBeDisplayed());
       expect(InventoryPage.inventoryContainer.toBeDisplayed());
